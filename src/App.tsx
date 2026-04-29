@@ -302,7 +302,7 @@ const Programs = () => {
   const programs = [
     { title: "Strength & Power", id: "01", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800&h=1000" },
     { title: "HIIT Conditioning", id: "02", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800&h=1000" },
-    { title: "Olympic Lifting", id: "03", img: "https://images.unsplash.com/photo-1541534458719-1d11420b3366?auto=format&fit=crop&q=80&w=800&h=1000" },
+    { title: "Olympic Lifting", id: "03", img: "/regenerated_image_1777451933677.png" },
     { title: "Personal Training", id: "04", img: "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&q=80&w=800&h=1000" },
     { title: "Nutrition Lab", id: "05", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800&h=1000" },
   ];
@@ -407,12 +407,11 @@ const Trainers = () => {
     { name: "Alex Iron", role: "Strength Lab", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800&h=1000" },
     { name: "Sarah Vane", role: "Conditioning Specialist", img: "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&q=80&w=800&h=1000" },
     { name: "Damon K.", role: "Lead Recovery", img: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=800&h=1000" },
-    { name: "Jax Steel", role: "Mobility Coach", img: "https://images.unsplash.com/photo-1599058917233-57c0e621c202?auto=format&fit=crop&q=80&w=800&h=1000" },
   ];
 
   return (
     <section id="trainers" className="py-0 border-b border-white/10 overflow-hidden">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+      <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
         {trainers.map((t, idx) => (
           <div key={idx} className="group relative h-[450px] sm:h-[600px] lg:h-[700px] overflow-hidden transition-all duration-700 bg-zinc-900">
              <img 
@@ -466,8 +465,8 @@ const Gallery = () => {
     "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800&h=800",
     "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=800&h=800",
     "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800&h=800",
-    "https://images.unsplash.com/photo-1581009146145-b5ef03a94e78?auto=format&fit=crop&q=80&w=800&h=800",
-    "https://images.unsplash.com/photo-1574673139081-30df205aa9f1?auto=format&fit=crop&q=80&w=800&h=800",
+    "/regenerated_image_1777451794919.png",
+    "/regenerated_image_1777451792589.png",
   ];
 
   return (
