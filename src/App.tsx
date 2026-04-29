@@ -61,8 +61,7 @@ const Navbar = () => {
           </div>
         </div>
         
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
@@ -79,7 +78,7 @@ const Navbar = () => {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-white"
+          className="lg:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -93,19 +92,19 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="absolute top-full left-0 w-full bg-black py-10 flex flex-col items-center gap-8 md:hidden border-t border-white/10"
+            className="absolute top-full left-0 w-full bg-[#0A0A0A] py-10 flex flex-col items-center gap-8 lg:hidden border-t border-white/10"
           >
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href} 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-display uppercase tracking-widest hover:text-brand transition-colors"
+                className="text-lg font-black uppercase tracking-widest hover:text-brand transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <button className="bg-brand text-white w-2/3 py-4 rounded-none font-display uppercase tracking-wider skew-card">
+            <button className="bg-brand text-white w-2/3 py-4 rounded-none font-black uppercase tracking-wider skew-card">
               Join Now
             </button>
           </motion.div>
@@ -120,7 +119,7 @@ const Hero = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, 150]);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center border-b border-white/10">
+    <section className="relative min-h-screen w-full overflow-hidden flex items-center border-b border-white/10 py-20 lg:py-0">
       {/* Background Layer with Video */}
       <motion.div 
         style={{ y: y1 }}
@@ -132,7 +131,8 @@ const Hero = () => {
           loop 
           muted 
           playsInline 
-          className="w-full h-full object-cover scale-110 grayscale opacity-40"
+          poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1920&h=1080"
+          className="w-full h-full object-cover scale-110 grayscale opacity-30"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-strong-man-lifting-a-barbell-in-a-gym-2343-large.mp4" type="video/mp4" />
         </video>
@@ -147,7 +147,7 @@ const Hero = () => {
       {/* Background Gradient Layer */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand/20 via-transparent to-brand/5 z-10" />
       
-      <div className="relative z-20 px-10 max-w-7xl mx-auto w-full grid grid-cols-12 gap-0 pt-20">
+      <div className="relative z-20 px-6 sm:px-10 max-w-7xl mx-auto w-full grid grid-cols-12 gap-0 pt-10 lg:pt-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -161,7 +161,7 @@ const Hero = () => {
           >
             EST. 2024 — GLOBAL PERFORMANCE
           </motion.p>
-          <h1 className="relative text-[14vw] lg:text-[110px] leading-[0.85] font-black uppercase tracking-tighter mb-10 italic">
+          <h1 className="relative text-[16vw] sm:text-[14vw] lg:text-[110px] leading-[0.85] font-black uppercase tracking-tighter mb-10 italic">
             <motion.span
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -227,33 +227,41 @@ const Hero = () => {
 };
 
 const SectionHeading = ({ subtitle, title, light = false }: { subtitle: string, title: string, light?: boolean }) => (
-  <div className="mb-12 flex flex-col md:flex-row md:items-baseline md:gap-8">
-    <span className="text-brand font-black text-[10px] uppercase tracking-[0.4em] mb-4 md:mb-0 block whitespace-nowrap">
+  <div className="mb-12 flex flex-col lg:flex-row lg:items-baseline lg:gap-8">
+    <span className="text-brand font-black text-[10px] uppercase tracking-[0.4em] mb-4 lg:mb-0 block whitespace-nowrap">
       {subtitle}
     </span>
     <h2 
       className={`text-6xl md:text-8xl leading-[0.85] italic font-black uppercase tracking-tighter ${light ? 'text-white' : 'text-white'}`}
-      dangerouslySetInnerHTML={{ __html: title.replace(/<br\s*\/?>/gi, ' ') }}
+      dangerouslySetInnerHTML={{ __html: title.split('<br/>').join(' ') }}
     />
   </div>
 );
 
 const About = () => {
   return (
-    <section id="about" className="py-24 px-10 max-w-7xl mx-auto border-b border-white/10">
-      <div className="grid grid-cols-12 gap-0">
-        <div className="col-span-12 lg:col-span-10 mb-16 lg:mb-0">
+    <section id="about" className="py-24 px-6 md:px-10 max-w-7xl mx-auto border-b border-white/10">
+      <div className="grid grid-cols-12 gap-0 lg:gap-20">
+        <div className="col-span-12 lg:col-span-7 mb-16 lg:mb-0">
           <SectionHeading subtitle="Architectural Performance" title="Built For Those Who Refuse To Settle" />
           <p className="text-white/60 mb-12 text-lg leading-relaxed font-medium max-w-2xl">
             Gym X started with a simple vision: to create a space where hard work is the only currency. We believe that fitness is about character, discipline, and the pursuit of your absolute best self.
           </p>
-          <button className="px-8 py-4 border border-brand text-brand font-black text-sm uppercase tracking-widest hover:bg-brand hover:text-white transition-all skew-card">
-            Learn Our Story
-          </button>
-        </div>
-        
-        <div className="col-span-12 mt-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10">
+          <div className="flex flex-col sm:flex-row gap-6 mb-16">
+            <button className="px-8 py-4 border border-brand text-brand font-black text-sm uppercase tracking-widest hover:bg-brand hover:text-white transition-all skew-card">
+              Learn Our Story
+            </button>
+            <div className="flex -space-x-3 items-center">
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className="w-10 h-10 rounded-full border-2 border-black overflow-hidden bg-zinc-800">
+                  <img src={`https://i.pravatar.cc/100?u=${i + 10}`} alt="Member" className="w-full h-full object-cover" />
+                </div>
+              ))}
+              <span className="ml-4 text-[10px] font-black uppercase tracking-widest text-white/40">+2k Members Joined</span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/10">
             {[
               { label: "Elite Gear", value: "State-of-the-art Rogue and Eleiko labs." },
               { label: "24/7 Access", value: "Available whenever your drive strikes." },
@@ -269,52 +277,84 @@ const About = () => {
             ))}
           </div>
         </div>
+        
+        <div className="col-span-12 lg:col-span-5 h-[400px] lg:h-full relative overflow-hidden skew-card">
+          <img 
+            src="/regenerated_image_1777451209485.png" 
+            alt="About Gym X" 
+            className="w-full h-full object-cover grayscale opacity-60 hover:scale-110 hover:grayscale-0 transition-all duration-1000"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+          <div className="absolute bottom-10 left-10 right-10">
+            <span className="text-brand font-black text-[10px] uppercase tracking-[0.4em] mb-2 block">Founding Principles</span>
+            <p className="text-xl font-bold italic uppercase tracking-tighter text-white">"The iron never lies to you."</p>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
 const Programs = () => {
+  const [activeImg, setActiveImg] = useState("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200&h=800");
+
   const programs = [
-    { title: "Strength & Power", id: "01" },
-    { title: "HIIT Conditioning", id: "02" },
-    { title: "Olympic Lifting", id: "03" },
-    { title: "Personal Training", id: "04" },
-    { title: "Nutrition Lab", id: "05" },
+    { title: "Strength & Power", id: "01", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800&h=1000" },
+    { title: "HIIT Conditioning", id: "02", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800&h=1000" },
+    { title: "Olympic Lifting", id: "03", img: "https://images.unsplash.com/photo-1541534458719-1d11420b3366?auto=format&fit=crop&q=80&w=800&h=1000" },
+    { title: "Personal Training", id: "04", img: "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&q=80&w=800&h=1000" },
+    { title: "Nutrition Lab", id: "05", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800&h=1000" },
   ];
 
   return (
-    <section id="programs" className="border-b border-white/10 grid grid-cols-1 md:grid-cols-12">
-      <div className="md:col-span-8 p-10 md:p-20 border-b md:border-b-0 md:border-r border-white/10 relative overflow-hidden group">
+    <section id="programs" className="border-b border-white/10 grid grid-cols-1 lg:grid-cols-12">
+      <div className="lg:col-span-8 p-6 md:p-10 lg:p-20 border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden group">
         <div className="absolute inset-0 bg-brand/5 group-hover:bg-brand/10 transition-colors" />
         <div className="relative z-10">
           <SectionHeading subtitle="Curated Disciplines" title="Superior Training" />
-          <p className="max-w-md text-white/50 text-sm uppercase tracking-[0.2em] leading-relaxed mb-12">
+          <p className="max-w-md text-white/50 text-sm uppercase tracking-[0.2em] leading-relaxed mb-8 md:mb-12">
             Our programs are engineered to produce maximum output for every specialized athlete.
           </p>
-          <div className="w-full h-[400px] bg-zinc-900 border border-white/5 overflow-hidden">
-             <img 
-               src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1200&h=800" 
-               alt="Training" 
-               className="w-full h-full object-cover grayscale opacity-60 hover:scale-105 hover:grayscale-0 transition-all duration-1000"
-               referrerPolicy="no-referrer"
-             />
+          <div className="w-full h-[300px] md:h-[500px] bg-zinc-900 border border-white/5 overflow-hidden shadow-2xl skew-card">
+             <AnimatePresence mode="wait">
+               <motion.img 
+                 key={activeImg}
+                 initial={{ opacity: 0, scale: 1.1 }}
+                 animate={{ opacity: 0.7, scale: 1 }}
+                 exit={{ opacity: 0, scale: 0.95 }}
+                 transition={{ duration: 0.5 }}
+                 src={activeImg} 
+                 alt="Training" 
+                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                 referrerPolicy="no-referrer"
+               />
+             </AnimatePresence>
           </div>
         </div>
       </div>
 
-      <div className="md:col-span-4 flex flex-col divide-y divide-white/10">
-        <div className="p-8 md:p-12 flex justify-between items-end">
+      <div className="lg:col-span-4 flex flex-col divide-y divide-white/10">
+        <div className="p-8 lg:p-12 flex justify-between items-end">
           <h3 className="text-2xl font-black uppercase italic">Programs</h3>
           <span className="text-[10px] uppercase font-black tracking-widest opacity-30">01 — 05</span>
         </div>
         {programs.map((prog) => (
-          <div key={prog.id} className="p-8 md:p-10 group cursor-pointer hover:bg-white/5 transition-all flex items-center justify-between">
+          <div 
+            key={prog.id} 
+            onMouseEnter={() => setActiveImg(prog.img)}
+            className="p-6 md:p-10 group cursor-pointer hover:bg-white/5 transition-all flex items-center justify-between"
+          >
             <div className="flex gap-6 items-center">
               <span className="text-[10px] font-black text-brand opacity-0 group-hover:opacity-100 transition-opacity">{prog.id}</span>
-              <span className="text-sm font-bold uppercase tracking-widest group-hover:text-brand transition-colors">{prog.title}</span>
+              <div className="flex flex-col">
+                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-brand transition-colors">{prog.title}</span>
+                <div className="lg:hidden h-24 mt-4 overflow-hidden rounded border border-white/10">
+                   <img src={prog.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 opacity-60 transition-all" alt={prog.title} />
+                </div>
+              </div>
             </div>
-            <div className="w-12 h-px bg-white/20 group-hover:w-20 group-hover:bg-brand transition-all" />
+            <div className="hidden sm:block w-12 h-px bg-white/20 group-hover:w-20 group-hover:bg-brand transition-all" />
           </div>
         ))}
       </div>
@@ -365,20 +405,25 @@ const Membership = () => {
 const Trainers = () => {
   const trainers = [
     { name: "Alex Iron", role: "Strength Lab", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800&h=1000" },
-    { name: "Sarah Vane", role: "Conditioning Specialist", img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&q=80&w=800&h=1000" },
-    { name: "Damon K.", role: "Lead Recovery", img: "https://images.unsplash.com/photo-1491752289445-586791e3674c?auto=format&fit=crop&q=80&w=800&h=1000" },
-    { name: "Jax Steel", role: "Mobility Coach", img: "https://images.unsplash.com/photo-1549476464-37392f719918?auto=format&fit=crop&q=80&w=800&h=1000" },
+    { name: "Sarah Vane", role: "Conditioning Specialist", img: "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&q=80&w=800&h=1000" },
+    { name: "Damon K.", role: "Lead Recovery", img: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=800&h=1000" },
+    { name: "Jax Steel", role: "Mobility Coach", img: "https://images.unsplash.com/photo-1599058917233-57c0e621c202?auto=format&fit=crop&q=80&w=800&h=1000" },
   ];
 
   return (
     <section id="trainers" className="py-0 border-b border-white/10 overflow-hidden">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
         {trainers.map((t, idx) => (
-          <div key={idx} className="group relative h-[600px] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-             <img src={t.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
-             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-10 flex flex-col justify-end">
+          <div key={idx} className="group relative h-[450px] sm:h-[600px] lg:h-[700px] overflow-hidden transition-all duration-700 bg-zinc-900">
+             <img 
+               src={t.img} 
+               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" 
+               referrerPolicy="no-referrer" 
+               alt={t.name} 
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-6 sm:p-8 md:p-12 flex flex-col justify-end">
                 <span className="text-brand font-black text-[10px] uppercase tracking-[0.4em] mb-2">{t.role}</span>
-                <h3 className="text-3xl text-white italic">{t.name}</h3>
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl text-white italic font-black uppercase tracking-tighter leading-none">{t.name}</h3>
              </div>
           </div>
         ))}
@@ -416,11 +461,26 @@ const Testimonials = () => {
 };
 
 const Gallery = () => {
+  const images = [
+    "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800&h=800",
+    "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800&h=800",
+    "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=800&h=800",
+    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800&h=800",
+    "https://images.unsplash.com/photo-1581009146145-b5ef03a94e78?auto=format&fit=crop&q=80&w=800&h=800",
+    "https://images.unsplash.com/photo-1574673139081-30df205aa9f1?auto=format&fit=crop&q=80&w=800&h=800",
+  ];
+
   return (
-    <section className="h-40 border-b border-white/10 grid grid-cols-5 divide-x divide-white/10">
-       {[...Array(5)].map((_, i) => (
-         <div key={i} className="hover:bg-brand/10 transition-colors cursor-pointer group flex items-center justify-center overflow-hidden">
-            <div className="text-[10px] font-black opacity-20 group-hover:opacity-100 group-hover:text-brand transition-all -rotate-90">VIEW FACILITY</div>
+    <section className="border-b border-white/10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-white/10">
+       {images.map((img, i) => (
+         <div key={i} className="relative aspect-square transition-all cursor-pointer group flex items-center justify-center overflow-hidden grayscale hover:grayscale-0">
+            <img 
+              src={img} 
+              className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" 
+              referrerPolicy="no-referrer" 
+              alt={`Gym Facility ${i + 1}`}
+            />
+            <div className="relative z-10 text-[9px] font-black opacity-60 group-hover:opacity-0 transition-opacity -rotate-90 tracking-[0.3em] uppercase">VIEW FACILITY</div>
          </div>
        ))}
     </section>
