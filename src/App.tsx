@@ -275,7 +275,7 @@ const About = () => {
         
         <div className="col-span-12 lg:col-span-5 h-[400px] lg:h-full relative overflow-hidden skew-card">
           <img 
-            src="/regenerated_image_1777451209485.png" 
+            src="https://lh3.googleusercontent.com/d/14kK_Tihmyp3akybgRuIloQ5M4w8VDN_q" 
             alt="About Gym X" 
             className="w-full h-full object-cover grayscale opacity-60 hover:scale-110 hover:grayscale-0 transition-all duration-1000"
             referrerPolicy="no-referrer"
@@ -458,7 +458,7 @@ const Gallery = () => {
   const images = [
     "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800&h=800",
     "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800&h=800",
-    "https://drive.google.com/thumbnail?id=14kK_Tihmyp3akybgRuIloQ5M4w8VDN_q&sz=w800",
+    "https://lh3.googleusercontent.com/d/14kK_Tihmyp3akybgRuIloQ5M4w8VDN_q",
     "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800&h=800",
     "/regenerated_image_1777451794919.png",
     "/regenerated_image_1777451792589.png",
