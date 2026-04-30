@@ -18,6 +18,7 @@ import {
   Star,
   Quote
 } from 'lucide-react';
+import { ShaderAnimation } from './components/ui/shader-lines';
 
 // --- Components ---
 
@@ -56,8 +57,8 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <LogoIcon />
           <div className="flex flex-col">
-            <span className="text-2xl font-black tracking-tighter uppercase italic leading-none">Gym X</span>
-            <span className="text-[7px] font-black tracking-[0.3em] uppercase text-brand mt-1.5 border-t border-brand/20 pt-1">Fitness for FearlessLife</span>
+            <span className="text-2xl font-black tracking-tighter uppercase italic leading-none drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">Gym X</span>
+            <span className="text-[7px] font-black tracking-[0.3em] uppercase text-brand mt-1.5 border-t border-brand/20 pt-1 shadow-[0_0_15px_rgba(0,242,255,0.2)]">Fitness for FearlessLife</span>
           </div>
         </div>
         
@@ -119,23 +120,14 @@ const Hero = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, 150]);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden flex items-center border-b border-white/10 py-20 lg:py-0">
-      {/* Background Layer with Video */}
+    <section className="relative min-h-screen w-full overflow-hidden flex items-center border-b border-white/10 py-20 lg:py-0 bg-black">
+      {/* Background Layer with Shader */}
       <motion.div 
         style={{ y: y1 }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1920&h=1080"
-          className="w-full h-full object-cover scale-110 grayscale opacity-30"
-        >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-strong-man-lifting-a-barbell-in-a-gym-2343-large.mp4" type="video/mp4" />
-        </video>
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <ShaderAnimation />
         {/* Animated Scanline Effect */}
         <motion.div 
           animate={{ y: ['-100%', '100%'] }}
@@ -145,80 +137,83 @@ const Hero = () => {
       </motion.div>
 
       {/* Background Gradient Layer */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand/20 via-transparent to-brand/5 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand/10 via-transparent to-brand/5 z-10" />
       
-      <div className="relative z-20 px-6 sm:px-10 max-w-7xl mx-auto w-full grid grid-cols-12 gap-0 pt-10 lg:pt-20">
+      <div className="relative z-20 px-6 sm:px-10 max-w-7xl mx-auto w-full pt-10 lg:pt-20 text-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="col-span-12 lg:col-span-10"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="flex flex-col items-center"
         >
           <motion.p 
             initial={{ opacity: 0, tracking: '0.1em' }}
-            animate={{ opacity: 1, tracking: '0.4em' }}
-            className="text-brand font-black text-sm uppercase mb-8"
+            animate={{ opacity: 1, tracking: '0.6em' }}
+            className="text-brand font-black text-xs uppercase mb-8 drop-shadow-[0_0_15px_rgba(0,242,255,0.5)]"
           >
-            EST. 2024 — GLOBAL PERFORMANCE
+            EST. 2024 — DIGITAL PERFORMANCE LAB
           </motion.p>
-          <h1 className="relative text-[16vw] sm:text-[14vw] lg:text-[110px] leading-[0.85] font-black uppercase tracking-tighter mb-10 italic">
+          
+          <h1 className="relative text-[14vw] sm:text-[12vw] lg:text-[130px] leading-[0.8] font-black uppercase tracking-tighter mb-10 italic">
             <motion.span
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
               className="block"
             >
               TRANSFORM
             </motion.span>
             <motion.span
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="block"
+              className="block text-stroke"
             >
-              YOUR <span className="text-stroke">BODY</span>
+              YOUR BODY
             </motion.span>
           </h1>
           
-          <div className="flex flex-col md:flex-row items-start gap-12 mt-12">
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="max-w-md text-lg text-white/60 font-medium leading-relaxed"
-            >
-              Expert trainers, cutting-edge equipment, and a high-performance community built for those who refuse to settle.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8 }}
-              className="flex items-center gap-6"
-            >
-              <button className="bg-white text-black px-12 py-5 font-bold text-sm uppercase tracking-widest transition-all skew-card h-fit hover:bg-brand hover:text-white">
-                Start Trial
-              </button>
-              <button className="group flex items-center gap-4 text-white/60 hover:text-white transition-all uppercase text-[10px] tracking-[0.3em] font-black">
-                View All Programs <div className="w-12 h-px bg-white/20 group-hover:bg-brand transition-all" />
-              </button>
-            </motion.div>
-          </div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="max-w-2xl mx-auto text-xl text-white/70 font-medium leading-relaxed mb-12"
+          >
+            Where raw human power meets digital precision. Our facility is engineered for those who seek the ultimate performance edge.
+          </motion.p>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8 }}
+            className="flex flex-wrap justify-center gap-6"
+          >
+            <button className="bg-brand text-black px-14 py-6 font-black text-sm uppercase tracking-widest transition-all skew-card hover:bg-white hover:text-brand shadow-[0_0_30px_rgba(0,242,255,0.3)]">
+              Start The Process
+            </button>
+            <button className="group flex items-center gap-4 text-white/60 hover:text-white transition-all uppercase text-[10px] tracking-[0.3em] font-black border-white/10 border px-8 py-6 skew-card hover:border-brand hover:shadow-[0_0_20px_rgba(0,242,255,0.15)]">
+              View Labs <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
         </motion.div>
 
         {/* Stat Dividers */}
-        <div className="col-span-12 mt-20 grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div className="border-l-2 border-brand pl-6 py-2">
-            <span className="block text-4xl font-black italic">500+</span>
-            <span className="text-[10px] uppercase tracking-widest opacity-50 font-black">Active Members</span>
+        <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-8 text-left border-t border-white/10 pt-12">
+          <div>
+            <span className="block text-3xl font-black italic">500+</span>
+            <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 font-black">Performance Athletes</span>
           </div>
-          <div className="border-l-2 border-brand pl-6 py-2">
-            <span className="block text-4xl font-black italic">24/7</span>
-            <span className="text-[10px] uppercase tracking-widest opacity-50 font-black">Full Access</span>
+          <div>
+            <span className="block text-3xl font-black italic">24/7</span>
+            <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 font-black">Digital Access</span>
           </div>
-          <div className="border-l-2 border-brand pl-6 py-2">
-            <span className="block text-4xl font-black italic">15+</span>
-            <span className="text-[10px] uppercase tracking-widest opacity-50 font-black">Elite Coaches</span>
+          <div>
+            <span className="block text-3xl font-black italic">22+</span>
+            <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 font-black">Specialized Labs</span>
+          </div>
+          <div>
+            <span className="block text-3xl font-black italic">Elite</span>
+            <span className="text-[9px] uppercase tracking-[0.3em] opacity-50 font-black">Level Recovery</span>
           </div>
         </div>
       </div>
@@ -248,7 +243,7 @@ const About = () => {
             Gym X started with a simple vision: to create a space where hard work is the only currency. We believe that fitness is about character, discipline, and the pursuit of your absolute best self.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 mb-16">
-            <button className="px-8 py-4 border border-brand text-brand font-black text-sm uppercase tracking-widest hover:bg-brand hover:text-white transition-all skew-card">
+            <button className="px-8 py-4 border border-brand text-brand font-black text-sm uppercase tracking-widest hover:bg-brand hover:text-black transition-all skew-card shadow-[0_0_15px_rgba(0,242,255,0.1)]">
               Learn Our Story
             </button>
             <div className="flex -space-x-3 items-center">
@@ -386,12 +381,12 @@ const Membership = () => {
                 <span className="block text-[10px] font-black text-white/40 uppercase tracking-widest mb-4">{plan.name}</span>
                 <div className="flex justify-between items-baseline mb-12">
                   <span className="text-5xl font-black tracking-tighter">${plan.price}<span className="text-sm">/mo</span></span>
-                  <span className={`text-[10px] px-2 py-1 uppercase font-black skew-tag ${plan.popular ? 'bg-brand' : 'bg-white/10'}`}>
+                  <span className={`text-[10px] px-2 py-1 uppercase font-black skew-tag ${plan.popular ? 'bg-brand text-black' : 'bg-white/10 text-white'}`}>
                     {plan.savings}
                   </span>
                 </div>
               </div>
-              <button className="w-full py-4 border border-brand text-brand font-black text-[10px] uppercase tracking-[0.2em] hover:bg-brand hover:text-white transition-all skew-card">
+              <button className="w-full py-4 border border-brand text-brand font-black text-[10px] uppercase tracking-[0.2em] hover:bg-brand hover:text-black transition-all skew-card">
                 Start Trial
               </button>
             </div>
@@ -519,7 +514,7 @@ const Contact = () => {
             <label className="text-[10px] font-black uppercase tracking-widest text-white/40 block mb-2">Message</label>
             <textarea rows={1} placeholder="DESCRIBE YOUR OBJECTIVE" className="w-full bg-transparent outline-none uppercase text-xs font-black placeholder:text-white/10 resize-none" />
           </div>
-          <button className="px-12 py-5 bg-brand text-white font-black text-xs uppercase tracking-[0.3em] skew-card hover:bg-white hover:text-brand transition-all">
+          <button className="px-12 py-5 bg-brand text-black font-black text-xs uppercase tracking-[0.3em] skew-card hover:bg-white hover:text-brand transition-all shadow-[0_0_20px_rgba(0,242,255,0.2)]">
             Initiate Contact
           </button>
         </form>
