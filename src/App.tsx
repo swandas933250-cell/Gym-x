@@ -463,7 +463,7 @@ const Gallery = () => {
   const images = [
     "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800&h=800",
     "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800&h=800",
-    "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=800&h=800",
+    "https://drive.google.com/thumbnail?id=14kK_Tihmyp3akybgRuIloQ5M4w8VDN_q&sz=w800",
     "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800&h=800",
     "/regenerated_image_1777451794919.png",
     "/regenerated_image_1777451792589.png",
@@ -476,7 +476,6 @@ const Gallery = () => {
             <img 
               src={img} 
               className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" 
-              referrerPolicy="no-referrer" 
               alt={`Gym Facility ${i + 1}`}
             />
             <div className="relative z-10 text-[9px] font-black opacity-60 group-hover:opacity-0 transition-opacity -rotate-90 tracking-[0.3em] uppercase">VIEW FACILITY</div>
